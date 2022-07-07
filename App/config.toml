@@ -1,0 +1,57 @@
+title = "TOML Config Example"
+
+[url]
+remoteServerUrl = 'http://192.168.30.10:6868'
+localServerUrl = 'http://0.0.0.0:8443'
+proxyServerUrl = 'http://0.0.0.0:8080/'
+proxyServerSSLUrl = '192.168.30.7:6688'
+localServerSSLUrl = 'https://192.168.30.7:8443'
+
+
+[filters]
+requestBody = ["top-secret","info","secret", "personal",]
+requestBodyCaseSensitive = ['secret','personal','important']
+requestBodyRegex = ['bekir$', '\Abekir']
+responseBody = ["new","top-secret","secret","ppoo"]
+responseBodyCaseSensitive = ['new','personal','important']
+responseBodyRegex = ['[0-4]{2,4}']
+requestHeaders = ["h1","header2","h3","request-header"]
+requestHeaderCheck = [["TokenId","12345"], ["TestHeader","TestValue"]]
+responseHeaders = ["h1","header2","h3","request-header"]
+responseHeaderCheck = [["TokenId","12345"], ["TestHeader","TestValue"]]
+InvalidMethods = ['DELETE']
+InvalidPathValues = ['/test','/data']
+InvalidQueryValues = ['id', 'val','deneme']
+
+
+[replacer]
+requestBody = [['key1', 'val1'],['key1', 'val1'],['key2', 'val2'], ['key3', 'val3']]
+requestBodyCaseSensitive = [['casekey','valCase'],['aaa','bbb']]
+requestBodyRegex = [['[0-7]{7,7}', 'Numbers'],['nokta$', 'BBBBB']]
+responseBody = [["val1","UPD1"],["key2","val2"],["key3","val3"]]
+responseBodyCaseSensitive = [['ccc','ddd'],['aaa','bbb']]
+responseBodyRegex = [['[7-9]{3,3}', 'NUM'],['([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', 'E-mail']]
+requestHeader = [["key1","replacedKEY1"],["key2","value2"]]
+responseHeader = [["put-header","this is new header"],["key2","value2"]]
+QueryReplacer = [["key1","value1"],["key2","value2"]]
+PathReplacer = [["/key1","/value1"],["/key2","/value2"]]
+
+
+[errorResponses]
+requestFilter = "No Authentication Body Text (by ProxyServer)"
+responseFilter = "Content Error, Response has secret information (by ProxyServer)"
+header = "Header Error, Response token wrong or doesn't exist (by ProxyServer)"
+headerReqError = "Error!, Request headers contains forbidden content"
+reqHeaderCheckError = 'Error!, Request Header Check Error (by ProxyServer)'
+resHeaderCheckError = 'Error!, Response Header Check Error (by ProxyServer)'
+headerResError = "Error!, Response header contains forbidden content"
+invalidMethodError = "Error!, Invalid Method"
+invalidPathError = "Error!, Invalid Path"
+invalidQueryError = "Error!, Invalid Query"
+reqRegexError = "Error!, Request Body RegexError"
+resRegexError = "Error!, Response Body RegexError"
+
+[ssl]
+enable = true
+key = "../certs/key.pem"
+cert = "../certs/cert.pem"
