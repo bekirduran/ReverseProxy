@@ -43,12 +43,14 @@ async def all_handler(request):
     serverUrl: str = config.get('url').get('localServerSSLUrl') if config.get('ssl').get('enable') else config.get('url').get('localServerUrl')
     serverUrl = serverUrl + requestPath
     respBody, respHeader, respStatus = None, None, None
-    if request.method == "PUT":
+    if request.method == "GET":
+        respBody, respHeader, respStatus = await Request.execute(request.method, serverUrl, "", requestHeader, requestQuery)
+    elif request.method == "PUT":
         respBody, respHeader, respStatus = await Request.execute(request.method, serverUrl, requestBody, requestHeader, requestQuery)
     elif request.method == "POST":
         respBody, respHeader, respStatus = await Request.execute(request.method, serverUrl, requestBody, requestHeader, requestQuery)
-    elif request.method == "GET":
-        respBody, respHeader, respStatus = await Request.execute(request.method, serverUrl, "", requestHeader, requestQuery)
+    elif request.method == "DELETE":
+        respBody, respHeader, respStatus = await Request.execute(request.method, serverUrl, requestBody, requestHeader, requestQuery)
 
     block, filterResponse = await FilterManager.HeaderFilter.execute(respHeader, config, False)
     if block is True:

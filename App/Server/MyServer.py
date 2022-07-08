@@ -3,7 +3,10 @@ import ssl
 import toml
 from aiohttp import web
 
-from App.Util.LogRecordManager import LogRecordManager
+from App.Server.DeleteHandler import DeleteHandler
+from App.Server.GetHandler import GetHandler
+from App.Server.PostHandler import PostHandler
+from App.Server.PutHandler import PutHandler
 
 parser = argparse.ArgumentParser(description="aiohttp server example")
 args = parser.parse_args()
@@ -13,43 +16,11 @@ config = toml.load('../config.toml')
 app = web.Application()
 routes = web.RouteTableDef()
 
+GetHandler.execute(routes)
+PostHandler.execute(routes)
+PutHandler.execute(routes)
+DeleteHandler.execute(routes)
 
-@routes.get('/{tail:.*}')
-async def get_handler(request):
-    data = "Successful, Get request received to client (by:Server)"
-    LogRecordManager.record(data,"MyServer")
-    response = web.StreamResponse()
-    response.content_type = "text/tab-separated-values; charset=utf-8"
-    response.headers.add("TokenId", "12345")
-    await response.prepare(request)
-    await response.write(data.encode("utf-8"))
-    return response
-
-
-@routes.post('/{tail:.*}')
-async def post_handler(request):
-    data = await request.content.read()
-    LogRecordManager.record(data,"MyServer")
-    postData = f"Successful, Post request received post data is:'{data.decode()}' (by:Server) "
-    response = web.StreamResponse()
-    response.content_type = "text/tab-separated-values; charset=utf-8"
-    response.headers.add("TokenId", "12345")
-    await response.prepare(request)
-    await response.write(postData.encode("utf-8"))
-    return response
-
-
-@routes.put('/{tail:.*}')
-async def put_handler(request):
-    data = await request.content.read()
-    LogRecordManager.record(data,"MyServer")
-    putData = f"Successful, Put request rec:'{data.decode()}'(by:Server) "
-    response = web.StreamResponse()
-    response.content_type = "text/tab-separated-values; charset=utf-8"
-    response.headers.add("TokenId", "12345")
-    await response.prepare(request)
-    await response.write(putData.encode("utf-8"))
-    return response
 
 app.add_routes(routes)
 args.ip = '192.168.30.7'

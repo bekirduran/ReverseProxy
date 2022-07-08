@@ -19,7 +19,7 @@ requestHeaders = ["h1","header2","h3","request-header"]
 requestHeaderCheck = [["TokenId","12345"], ["TestHeader","TestValue"]]
 responseHeaders = ["h1","header2","h3","request-header"]
 responseHeaderCheck = [["TokenId","12345"], ["TestHeader","TestValue"]]
-InvalidMethods = ['DELETE']
+validMethods = ['GET','POST','PUT','DELETE']
 InvalidPathValues = ['/test','/data']
 InvalidQueryValues = ['id', 'val','deneme']
 

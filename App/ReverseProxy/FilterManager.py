@@ -119,8 +119,7 @@ class MethodFilter:
         bodyText = ""
         flag = False
         methodFilterResponse = web.Response()
-        if True in list(map(lambda method: True if method == request.method else False,
-                            config.get('filters').get('InvalidMethods'))):
+        if request.method not in config.get('filters').get('validMethods'):
             flag = True
             bodyText += config.get('errorResponses').get('invalidMethodError')
             LogRecordManager.record(config.get('errorResponses').get('invalidMethodError'), 'reverseProxy')
