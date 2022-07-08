@@ -1,6 +1,5 @@
 from aiohttp import web
 
-from App.ReverseProxy.HeaderCheck import HeaderCheck
 from App.Util.RegexManager import RegexManager
 from App.Util.LogRecordManager import LogRecordManager
 
@@ -128,3 +127,21 @@ class MethodFilter:
         methodFilterResponse.text = bodyText
         methodFilterResponse.set_status(401)
         return flag, methodFilterResponse
+
+
+class HeaderCheck:
+    @staticmethod
+    async def request(header,config):
+        check = False
+        for item in config.get('filters').get('requestHeaderCheck'):
+            if item[0] in header and item[1] == header[item[0]]:
+                check = True
+        return check
+
+    @staticmethod
+    async def response(header,config):
+        check = False
+        for item in config.get('filters').get('responseHeaderCheck'):
+            if item[0] in header and item[1] == header[item[0]]:
+                check = True
+        return check
