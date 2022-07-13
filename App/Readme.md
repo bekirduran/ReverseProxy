@@ -32,7 +32,7 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
     - (Request/Response)BodyReplacer = true/false
     - (Request/Response)HeaderReplacer = true/false
 - [x] 46. satırdan itibaren başlayan request.method if checkleri kaldırılacak tek bir satırda halledilecek.
-- [ ] Argparser kısmında default değer verebilme özelliği var. Eğer kullanıcı programı çalıştırır iken --toml parametresini vermez ise ise o değer gelsin.
+- [x] Argparser kısmında default değer verebilme özelliği var. Eğer kullanıcı programı çalıştırır iken --toml parametresini vermez ise ise o değer gelsin.
 - [x] Filter/Replacer kısmında ...CaseSensitive isimleri => ...CaseInsensitive olarak değiştirilecek. Çünkü yaptıkları iş case-insensitiv
 - [ ] Stream kısmı koda eklenecek.
 - [x] Header check olayı case-insesitive olacak.
