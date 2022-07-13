@@ -36,5 +36,5 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
 - [x] Filter/Replacer kısmında ...CaseSensitive isimleri => ...CaseInsensitive olarak değiştirilecek. Çünkü yaptıkları iş case-insensitiv
 - [ ] Stream kısmı koda eklenecek.
 - [x] Header check olayı case-insesitive olacak.
-- [ ] Request.py sertifika olayına gerek yok.
+- [x] Request.py sertifika olayına gerek yok.
 - [ ] Loggin kısmı biraz daha araştırılması lazım. Her seferinde log yazmak için basicconf çağırmaya gerek var mı?
