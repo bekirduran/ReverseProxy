@@ -1,6 +1,6 @@
 # **YAPILACAKLAR LISTESI**
 ## Genel Yapılacaklar Listesi
-- [ ] Gitignore certs eklenicek. Klasör yapısını değiştirmişsin ama .gitignore düzenlememişsin.
+- [x] Gitignore certs eklenicek. Klasör yapısını değiştirmişsin ama .gitignore düzenlememişsin.
 - [ ] Gerekli dosyalar [main kısmı eklenecek ](https://www.freecodecamp.org/news/if-name-main-python-example/#:~:text=We%20can%20use%20an%20if,name%20if%20it%20is%20imported.) 
 - [ ] Client, Server ve ReverseProxy için farklı TOML dosyaları oluşturulacak. Her biri kendine ait toml dosyasını okuyacak.
 - [ ] [HaProxy](https://www.haproxy.com/) ve [NGINX](https://www.nginx.com/) araştırılıcak ve kurulumu yapılacak. ReverseProxynin önüne HaProxy kurulucak. Örnek bir NGINX kurulumu yapılacak ve ReverseProxy NGINX sunucusuna istek yapacak şekilde olacak.
@@ -31,10 +31,10 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
 - Replacer Tarafı
     - (Request/Response)BodyReplacer = true/false
     - (Request/Response)HeaderReplacer = true/false
-- [ ] 46. satırdan itibaren başlayan request.method if checkleri kaldırılacak tek bir satırda halledilecek.
+- [x] 46. satırdan itibaren başlayan request.method if checkleri kaldırılacak tek bir satırda halledilecek.
 - [ ] Argparser kısmında default değer verebilme özelliği var. Eğer kullanıcı programı çalıştırır iken --toml parametresini vermez ise ise o değer gelsin.
-- [ ] Filter/Replacer kısmında ...CaseSensitive isimleri => ...CaseInsensitive olarak değiştirilecek. Çünkü yaptıkları iş case-insensitiv
+- [x] Filter/Replacer kısmında ...CaseSensitive isimleri => ...CaseInsensitive olarak değiştirilecek. Çünkü yaptıkları iş case-insensitiv
 - [ ] Stream kısmı koda eklenecek.
-- [ ] Header check olayı case-insesitive olacak.
+- [x] Header check olayı case-insesitive olacak.
 - [ ] Request.py sertifika olayına gerek yok.
 - [ ] Loggin kısmı biraz daha araştırılması lazım. Her seferinde log yazmak için basicconf çağırmaya gerek var mı?
