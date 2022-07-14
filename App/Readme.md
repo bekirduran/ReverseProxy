@@ -19,7 +19,7 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
 ```
 
 ### ReverseProxy Yapılacaklar Listesi
-- [ ] Body ve Header Filter/Replacer kısmında refactor yapılacak. Nasıl bir yol izlenirse burada aynı işi yapan duplicate code sayısı düşürülür bakılacak. Request ve response genel olarak aynı şeyleri yapıyor tek farklılıkları config içinden okudukları alan isimi.
+- [x] Body ve Header Filter/Replacer kısmında refactor yapılacak. Nasıl bir yol izlenirse burada aynı işi yapan duplicate code sayısı düşürülür bakılacak. Request ve response genel olarak aynı şeyleri yapıyor tek farklılıkları config içinden okudukları alan isimi.
 - [x] Filter ve Replacer özelliklerinin açılıp/kapanması TOML tarafına eklenecek ve gerekli geliştirilmeler yapılacak. 
 - Filters tarafı; 
   - (Request/Response)BodyFilter = true/false
