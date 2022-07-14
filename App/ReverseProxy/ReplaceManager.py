@@ -6,6 +6,11 @@ class BodyReplacer:
 
     @staticmethod
     async def execute(bodyEncoded, config, isRequest):
+
+        bodyReplacerOnOff = config.get('replacer').get('bodyReplacer')
+        if not bodyReplacerOnOff:
+            return bodyEncoded
+
         body = bodyEncoded.decode()
         if isRequest:
             for item in config.get('replacer').get('requestBody'):
@@ -14,7 +19,7 @@ class BodyReplacer:
                     body = newBodyContent
                     LogRecordManager.record('Request body replaced: ' + item[0] + ' -> ' + item[1], 'reverseProxy')
 
-            for item in config.get('replacer').get('requestBodyCaseSensitive'):
+            for item in config.get('replacer').get('requestBodyCaseInsensitive'):
                 bodyContent = body
                 if item[0].casefold() in bodyContent.casefold():
                     newBodyContent = bodyContent.casefold().replace(item[0], item[1])
@@ -37,7 +42,7 @@ class BodyReplacer:
                     body = newBodyContent
                     LogRecordManager.record('Response body replaced: ' + item[0] + ' -> ' + item[1], 'reverseProxy')
 
-            for key, val in config.get('replacer').get('responseBodyCaseSensitive'):
+            for key, val in config.get('replacer').get('responseBodyCaseInsensitive'):
                 bodyContent = body
                 if key.lower() in bodyContent.lower():
                     newBodyContent = bodyContent.lower().replace(key, val)
@@ -57,9 +62,10 @@ class HeaderReplacer:
 
     @staticmethod
     async def execute(headers, config, isRequest):
-
+        headerReplacerOnOff = config.get('replacer').get('headerReplacer')
+        if not headerReplacerOnOff:
+            return headers
         if isRequest:
-
             for item in config.get('replacer').get('requestHeader'):
                 if item[0] in headers:
                     newHeader = headers.copy()
@@ -81,6 +87,9 @@ class QueryPathReplacer:
     async def execute(request, config):
         requestQuery = request.query
         requestPath = request.path
+        pathAndQueryReplacerOnOff = config.get('replacer').get('pathAndQueryReplacer')
+        if not pathAndQueryReplacerOnOff:
+            return requestQuery, requestPath
 
         for item in config.get('replacer').get('QueryReplacer'):
             if item[0] in request.query:

@@ -8,6 +8,10 @@ class BodyFilter:
 
     @staticmethod
     async def execute(bodyEncoded, config, isRequest):
+        bodyFilterOnOff = config.get('filters').get('bodyFilter')
+        if not bodyFilterOnOff:
+            return False, bodyEncoded
+
         body = bodyEncoded.decode()
         bodyText = ""
         flag = False
@@ -19,10 +23,10 @@ class BodyFilter:
                 bodyText += config.get('errorResponses').get('requestFilter') + '\n'
                 LogRecordManager.record(config.get('errorResponses').get('requestFilter'), 'reverseProxy')
             if True in list(map(lambda word: True if word.lower() in body.lower() else False,
-                                config.get('filters').get('requestBodyCaseSensitive'))):
+                                config.get('filters').get('requestBodyCaseInsensitive'))):
                 flag = True
-                bodyText += config.get('errorResponses').get('requestFilter') + ' (case sensitive)' + '\n'
-                LogRecordManager.record(config.get('errorResponses').get('requestFilter') + ' (case sensitive)', 'reverseProxy')
+                bodyText += config.get('errorResponses').get('requestFilter') + ' (case insensitive)' + '\n'
+                LogRecordManager.record(config.get('errorResponses').get('requestFilter') + ' (case insensitive)', 'reverseProxy')
             if RegexManager.execute(body, config.get('filters').get('requestBodyRegex')):
                 flag = True
                 bodyText += config.get('errorResponses').get('reqRegexError') + '\n'
@@ -38,10 +42,10 @@ class BodyFilter:
                 bodyText += config.get('errorResponses').get('responseFilter') + '\n'
                 LogRecordManager.record(config.get('errorResponses').get('responseFilter'), 'reverseProxy')
             if True in list(map(lambda header: True if header.lower() in body.lower() else False,
-                                config.get('filters').get('responseBodyCaseSensitive'))):
+                                config.get('filters').get('responseBodyCaseInsensitive'))):
                 flag = True
-                bodyText += config.get('errorResponses').get('responseFilter') + ' (case sensitive)' + '\n'
-                LogRecordManager.record(config.get('errorResponses').get('responseFilter')+'(case sensitive)', 'reverseProxy')
+                bodyText += config.get('errorResponses').get('responseFilter') + ' (case insensitive)' + '\n'
+                LogRecordManager.record(config.get('errorResponses').get('responseFilter')+'(case insensitive)', 'reverseProxy')
             if RegexManager.execute(body, config.get('filters').get('responseBodyRegex')):
                 flag = True
                 bodyText += config.get('errorResponses').get('resRegexError') + '\n'
@@ -55,6 +59,10 @@ class HeaderFilter:
 
     @staticmethod
     async def execute(header, config, isRequest):
+        headerFilterOnOff = config.get('filters').get('headerFilter')
+        if not headerFilterOnOff:
+            return False, header
+
         bodyText = ""
         flag = False
         headerFilterResponse = web.Response()
@@ -90,6 +98,9 @@ class QueryPathFilter:
 
     @staticmethod
     async def execute(request, config):
+        queryPathFilterOnOff = config.get('filters').get('pathAndQueryFilter')
+        if not queryPathFilterOnOff:
+            return False, request
         bodyText = ""
         flag = False
         queryPathFilterResponse = web.Response()
@@ -116,6 +127,9 @@ class MethodFilter:
 
     @staticmethod
     async def execute(request, config):
+        methodFilterOnOff = config.get('filters').get('methodFilter')
+        if not methodFilterOnOff:
+            return False, request
         bodyText = ""
         flag = False
         methodFilterResponse = web.Response()
@@ -133,7 +147,7 @@ class HeaderCheck:
     async def request(header,config):
         check = False
         for item in config.get('filters').get('requestHeaderCheck'):
-            if item[0] in header and item[1] == header[item[0]]:
+            if item[0].casefold() in header and item[1].casefold() == header[item[0]].casefold():
                 check = True
         return check
 
@@ -141,6 +155,6 @@ class HeaderCheck:
     async def response(header,config):
         check = False
         for item in config.get('filters').get('responseHeaderCheck'):
-            if item[0] in header and item[1] == header[item[0]]:
+            if item[0].casefold() in header and item[1].casefold() == header[item[0]].casefold():
                 check = True
         return check
