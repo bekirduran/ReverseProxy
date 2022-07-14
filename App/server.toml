@@ -1,0 +1,9 @@
+title = "Server TOML Config File"
+
+[ServerSettings]
+ip_address = '192.168.2.21:8080' #Buraya Request isteğinin gideceği URI yazılacak
+EnableCustomHeader = true # Header ekleme özelliğini açıp/kapama
+CustomHeaders = [["header-key","header-value"],['TokenId','12345'],['apiKey', '1071']] #Request yollanacağı zaman eklenecek olan
+EnableCustomData = true # Body gönderme özelliğini açıp/kapama. Seçilen Methoda göre bu durumu göze almayacaksın. Örn RequestMethod "GET" ise BODY gönderme gibi bir işlem olamaz.
+CustomData = "MyDataFromSERVER/test.json" #Buraya datanın tutulduğu dosyanın full pathi yazılacak. Bu dosyanın içindeki datayı okuyup göndericek.
+StreamMode = true #Stream mode açıp/kapama. Stream mode açık ise request ve response tarafındaki BODY kısımları buna uygun şekilde okunacak
