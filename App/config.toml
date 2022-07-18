@@ -1,15 +1,14 @@
 title = "TOML Config Example"
 
 [url]
-remoteServerUrl = 'http://192.168.30.10:6868'
-localServerUrl = 'http://0.0.0.0:8443'
+localServerUrl = 'http://192.168.30.5:3000'
 proxyServerUrl = 'http://0.0.0.0:8080/'
-proxyServerSSLUrl = '192.168.2.21:6688'
-localServerSSLUrl = 'http://192.168.2.21:8080'
+proxyServerSSLUrl = '192.168.30.5:8443'
+localServerSSLUrl = 'http://192.168.30.5:3000'
 
 
 [filters]
-bodyFilter = false
+bodyFilter = true
 requestBody = ["top-secret","info","secret", "personal",]
 requestBodyCaseInsensitive = ['secret','personal','important']
 requestBodyRegex = ['bekir$', '\Abekir']
@@ -17,7 +16,7 @@ responseBody = ["new","top-secret","secret","ppoo"]
 responseBodyCaseInsensitive = ['new','personal','important']
 responseBodyRegex = ['[0-4]{2,4}']
 
-headerFilter = true
+headerFilter = false
 requestHeaders = ["h1","header2","h3","request-header"]
 requestHeaderCheck = [["TokenId","12345"], ["TestHeader","TestValue"]]
 responseHeaders = ["h1","header2","h3","request-header"]

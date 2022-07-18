@@ -1,7 +1,7 @@
 title = "Client TOML Config File"
 
 [ClientSettings]
-URI = '192.168.2.21:6688' #Buraya Request isteğinin gideceği URI yazılacak
+URI = '192.168.30.6' #Buraya Request isteğinin gideceği URI yazılacak
 NumberOfRequests = 1 #Buraya ReverseProxy kısmına kaç kere istek yapılacağı eklenecek
 RequestMethod = "GET" # Yapılacak olan requestin METHOD'u buraya yazılacak
 EnableCustomHeader = true # Header ekleme özelliğini açıp/kapama
