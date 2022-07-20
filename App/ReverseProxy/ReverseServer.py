@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
     @routes.route("*", "/{tail:.*}")
     async def all_handler(request):
+        print("URL: ", request.url)
 
         block, methodResponse = await FilterManager.MethodFilter.execute(request, config)
         if block is True:

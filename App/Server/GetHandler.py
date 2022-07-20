@@ -8,6 +8,7 @@ class GetHandler:
     def execute(routes,config):
         @routes.get('/{tail:.*}')
         async def get_handler(request):
+            print(request.headers)
             data = "Successful, Get request received to client (by:Server)"
             LogRecordManager.record(data, "MyServer")
             response = web.StreamResponse()

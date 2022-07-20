@@ -63,6 +63,6 @@ reqRegexError = "Error!, Request Body RegexError"
 resRegexError = "Error!, Response Body RegexError"
 
 [ssl]
-enable = true
+enable = false
 key = "../certs/key.pem"
 cert = "../certs/cert.pem"
