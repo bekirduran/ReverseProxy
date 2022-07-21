@@ -1,5 +1,5 @@
 from aiohttp import web
-from App.Util.LogRecordManager import LogRecordManager
+from App.ReverseProxy.LogRecordManager import LogRecordManager
 
 
 class GetHandler:

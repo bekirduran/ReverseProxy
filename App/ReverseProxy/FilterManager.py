@@ -1,7 +1,8 @@
 from aiohttp import web
 
-from App.Util.RegexManager import RegexManager
-from App.Util.LogRecordManager import LogRecordManager
+
+import LogRecordManager
+import RegexManager
 
 
 class BodyFilter:

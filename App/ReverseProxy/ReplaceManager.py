@@ -1,5 +1,5 @@
-from App.Util.RegexManager import RegexManager
-from App.Util.LogRecordManager import LogRecordManager
+import RegexManager
+import LogRecordManager
 
 
 class BodyReplacer:
