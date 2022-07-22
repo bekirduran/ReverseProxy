@@ -1,5 +1,7 @@
-import RegexManager
-import LogRecordManager
+import sys
+sys.path.append('../../')
+from App.utils.LogRecordManager import LogRecordManager
+from App.utils.RegexManager import RegexManager
 
 
 class BodyReplacer:
@@ -33,7 +35,7 @@ class BodyReplacer:
             if item[0].casefold() in bodyContent.casefold():
                 newBodyContent = bodyContent.casefold().replace(item[0], item[1])
                 body = newBodyContent
-                LogRecordManager.record(logText+ 'insensitive ' + item[0] + ' -> ' + item[1], 'reverseProxy')
+                LogRecordManager.record(logText + 'insensitive ' + item[0] + ' -> ' + item[1], 'reverseProxy')
         for key, val in replacingRegexText:
             bodyContent = body
             newBodyContent = RegexManager.replace(bodyContent, [key], val)
@@ -83,9 +85,9 @@ class QueryPathReplacer:
                 newQuery = request.query.copy()
                 newQuery.add(item[1], newQuery.pop(item[0]))
                 requestQuery = newQuery
-                LogRecordManager.record('Query path replaced: ' + item[0] + ' -> ' + item[1] ,'reverseProxy')
+                LogRecordManager.record('Query path replaced: ' + item[0] + ' -> ' + item[1], 'reverseProxy')
         for item in config.get('replacer').get('PathReplacer'):
             if item[0] == requestPath:
                 requestPath = item[1]
-                LogRecordManager.record('Path replaced: ' + item[0] + ' -> ' + item[1],'reverseProxy')
+                LogRecordManager.record('Path replaced: ' + item[0] + ' -> ' + item[1], 'reverseProxy')
         return requestQuery, requestPath

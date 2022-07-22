@@ -3,7 +3,7 @@ import asyncio
 
 import aiohttp
 import toml
-from App.ReverseProxy.LogRecordManager import LogRecordManager
+from App.utils.LogRecordManager import LogRecordManager
 
 
 class Client:

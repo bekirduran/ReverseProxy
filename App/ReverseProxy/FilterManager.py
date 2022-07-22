@@ -1,8 +1,8 @@
 from aiohttp import web
-
-
-import LogRecordManager
-import RegexManager
+import sys
+sys.path.append('../../')
+from App.utils.LogRecordManager import LogRecordManager
+from App.utils.RegexManager import RegexManager
 
 
 class BodyFilter:

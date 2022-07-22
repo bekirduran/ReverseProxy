@@ -1,10 +1,8 @@
 title = "TOML Config Example"
 
 [url]
-localServerUrl = 'http://192.168.30.5:3000'
-proxyServerUrl = 'http://0.0.0.0:8080/'
-proxyServerSSLUrl = '192.168.30.5:8443'
-localServerSSLUrl = 'http://192.168.30.5:3000'
+ip_address = '192.168.1.36:8443'
+Server_IP = 'http://192.168.1.36:3000'
 
 
 [filters]

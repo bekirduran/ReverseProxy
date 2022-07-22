@@ -1,6 +1,7 @@
 from aiohttp import web
-
-from App.ReverseProxy.LogRecordManager import LogRecordManager
+import sys
+sys.path.append('../../')
+from App.utils.LogRecordManager import LogRecordManager
 
 
 class PutHandler:
