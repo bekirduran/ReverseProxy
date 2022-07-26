@@ -11,7 +11,7 @@ from App.Server.PutHandler import PutHandler
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="aiohttp server example")
-    parser.add_argument('--toml', type=str, help='toml file path', default='../configs/server.toml')
+    parser.add_argument('-t','--toml', type=str, help='toml file path', default='../configs/server.toml')
     parser.add_argument('-i', '--ip_address', type=str, help='server ip', default='192.168.1.36')
     args = parser.parse_args()
     config = toml.load(args.toml)
