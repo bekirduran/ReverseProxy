@@ -11,7 +11,7 @@ from App.ReverseProxy.Request import Request
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='ProxyServer Argument Parser:::::')
-    parser.add_argument('--toml', type=str, help='toml file path', default='../configs/config.toml')
+    parser.add_argument('-t','--toml', type=str, help='toml file path', default='../configs/config.toml')
     args = parser.parse_args()
     config = toml.load(args.toml)
     routes = web.RouteTableDef()
