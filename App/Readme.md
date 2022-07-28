@@ -3,7 +3,7 @@
 - [x] Gitignore certs eklenicek. Klasör yapısını değiştirmişsin ama .gitignore düzenlememişsin.
 - [x] Gerekli dosyalar [main kısmı eklenecek ](https://www.freecodecamp.org/news/if-name-main-python-example/#:~:text=We%20can%20use%20an%20if,name%20if%20it%20is%20imported.) 
 - [x] Client, Server ve ReverseProxy için farklı TOML dosyaları oluşturulacak. Her biri kendine ait toml dosyasını okuyacak.
-- [ ] [HaProxy](https://www.haproxy.com/) ve [NGINX](https://www.nginx.com/) araştırılıcak ve kurulumu yapılacak. ReverseProxynin önüne HaProxy kurulucak. Örnek bir NGINX kurulumu yapılacak ve ReverseProxy NGINX sunucusuna istek yapacak şekilde olacak.
+- [x] [HaProxy](https://www.haproxy.com/) ve [NGINX](https://www.nginx.com/) araştırılıcak ve kurulumu yapılacak. ReverseProxynin önüne HaProxy kurulucak. Örnek bir NGINX kurulumu yapılacak ve ReverseProxy NGINX sunucusuna istek yapacak şekilde olacak.
 ## Örnek Client TOML Dosyası
 ```
 title = "Client TOML Config File"
