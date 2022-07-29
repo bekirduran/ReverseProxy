@@ -19,7 +19,7 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
 ```
 
 ### ReverseProxy Yapılacaklar Listesi
-- [ ] Body ve Header Filter/Replacer kısmında refactor yapılacak. Nasıl bir yol izlenirse burada aynı işi yapan duplicate code sayısı düşürülür bakılacak. Request ve response genel olarak aynı şeyleri yapıyor tek farklılıkları config içinden okudukları alan isimi.
+- [x] Body ve Header Filter/Replacer kısmında refactor yapılacak. Nasıl bir yol izlenirse burada aynı işi yapan duplicate code sayısı düşürülür bakılacak. Request ve response genel olarak aynı şeyleri yapıyor tek farklılıkları config içinden okudukları alan isimi.
 - [x] Filter ve Replacer özelliklerinin açılıp/kapanması TOML tarafına eklenecek ve gerekli geliştirilmeler yapılacak. 
 - Filters tarafı; 
   - (Request/Response)BodyFilter = true/false
@@ -33,7 +33,7 @@ StreamMode = true/false #Stream mode açıp/kapama. Stream mode açık ise reque
 - [x] 46. satırdan itibaren başlayan request.method if checkleri kaldırılacak tek bir satırda halledilecek.
 - [x] Argparser kısmında default değer verebilme özelliği var. Eğer kullanıcı programı çalıştırır iken --toml parametresini vermez ise ise o değer gelsin.
 - [x] Filter/Replacer kısmında ...CaseSensitive isimleri => ...CaseInsensitive olarak değiştirilecek. Çünkü yaptıkları iş case-insensitiv
-- [ ] Stream kısmı koda eklenecek.
+- [x] Stream kısmı koda eklenecek.
 - [x] Header check olayı case-insesitive olacak.
 - [x] Request.py sertifika olayına gerek yok.
-- [ ] Loggin kısmı biraz daha araştırılması lazım. Her seferinde log yazmak için basicconf çağırmaya gerek var mı?
+- [x] Loggin kısmı biraz daha araştırılması lazım. Her seferinde log yazmak için basicconf çağırmaya gerek var mı?
