@@ -23,5 +23,6 @@ class GetHandler:
 
             await response.prepare(request)
             await response.write(data.encode("utf-8"))
+            print(response.headers)
 
             return response

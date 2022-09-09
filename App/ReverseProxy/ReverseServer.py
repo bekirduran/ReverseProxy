@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     @routes.route("*", "/{tail:.*}")
     async def all_handler(request):
-        print("URL: ", request.url)
+        print("header: ", request.headers)
 
         block, methodResponse = await FilterManager.MethodFilter.execute(request, config)
         if block is True:
@@ -64,6 +64,7 @@ if __name__ == '__main__':
         response.content_type = "text/tab-separated-values; charset=utf-8"
         await response.prepare(request)
         await response.write(replacedBody.encode("utf-8"))
+        print(f"Response HeadeR:{response.headers}")
 
         return response
 

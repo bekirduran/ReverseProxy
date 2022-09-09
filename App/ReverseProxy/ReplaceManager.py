@@ -56,11 +56,15 @@ class HeaderReplacer:
         if isRequest:
             replacingHeaderText = config.get('replacer').get('requestHeader')
             logText = 'Request header replaced: '
+            for item in replacingHeaderText:
+                if item[0] in headers:
+                    newHeader = headers.copy()
+                    newHeader.add(item[1], newHeader.pop(item[0]))
+                    headers = newHeader
+                    LogRecordManager.record(logText + item[0] + ' -> ' + item[1], 'reverseProxy')
         else:
             replacingHeaderText = config.get('replacer').get('responseHeader')
             logText = 'Response header replaced: '
-
-        if isRequest:
             for item in replacingHeaderText:
                 if item[0] in headers:
                     newHeader = headers.copy()

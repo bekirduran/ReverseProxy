@@ -1,8 +1,8 @@
 title = "TOML Config Example"
 
 [url]
-ip_address = '192.168.1.36:8443'
-Server_IP = 'http://192.168.1.36:3000'
+ip_address = '192.168.8.44:8443'
+Server_IP = 'http://192.168.8.44:3000'
 
 
 [filters]
